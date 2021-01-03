@@ -1,0 +1,141 @@
+query getAllEmployees{
+  allEmployees{
+      edges{
+        node{
+          id
+          employeeName
+          employeeCity{
+            id
+            cityName
+          }
+          employeeTitle{
+            id
+            titleName
+          }
+      }
+    }
+  }
+}
+
+query getCity{
+  city(id: 1){
+    id
+    cityName
+  }
+}
+
+
+query getAllEmployeesByCityName {
+  allEmployees(employeeCity_CityName: "Miami"){
+    edges{
+      node{
+        id
+        employeeName
+        employeeCity{
+          id
+          cityName
+        }
+        employeeTitle{
+          id
+          titleName
+        }
+      }
+    }
+  }
+}
+
+query getAllTitles {
+  allTitles {
+    edges{
+      node{
+        id
+        titleName
+      }
+    }
+  }
+}
+
+query getEmployee {
+  allEmployees(employeeName: "John Phillips"){
+    edges {
+      node {
+        id
+        employeeName
+        employeeCity {
+          id
+          cityName
+        }
+        employeeTitle {
+          id
+          titleName
+        }
+      }
+    }
+  }
+}
+
+mutation createTitle {
+  createTitle(input: {titleName: "CIO"}){
+    title{
+      id
+      titleName
+    }
+  }
+}
+
+mutation createEmployee {
+  createEmployee(input:{
+    employeeName: "John Phillips",
+    employeeCity: "Miami",
+    employeeTitle: "CIO"
+  }){
+    employee{
+    	employeeName
+      employeeCity{
+        cityName
+      }
+      employeeTitle{
+        titleName
+      }
+    }
+  }
+}
+
+
+mutation updateEmployee {
+  updateEmployee (input: {
+    id: "RW1wbG95ZWVOb2RlOjM=", 
+    employeeName: "Jason Phillips",
+		employeeCity: "New York",
+    employeeTitle: "CTO"
+  }){
+    employee {
+      employeeName
+      employeeCity{
+        id
+        cityName
+      }
+      employeeTitle{
+        id
+        titleName
+      }
+    }
+  }
+}
+
+mutation deleteEmployee {
+  deleteEmployee(input: {id: "RW1wbG95ZWVOb2RlOjM="}){
+    employee {
+      employeeName
+      employeeCity{
+        cityName
+      }
+      employeeTitle {
+        titleName
+      }
+    }
+  }
+}
+
+
+
